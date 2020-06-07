@@ -6,9 +6,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico" />
+    <meta name="description" content="GitHub App" />
+    <meta name="author" content="Gaurav Singh" />
+    <link rel="icon" type="image/png" href="git.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="logo.png" />
+    <meta name="theme-color" content="#000000" />
 
     <title>Github App</title>
 
@@ -37,13 +40,11 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="https://github.com/gauravsingh9356"
-              >GitHub  <span class="sr-only">(current)</span></a
+              >GitHub <span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://codepen.io/iamgs"
-              >Codepen </a
-            >
+            <a class="nav-link" href="https://codepen.io/iamgs">Codepen </a>
           </li>
         </ul>
       </div>
@@ -72,5 +73,15 @@
     ></script>
     <script src="js/main.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('serviceworker.js')
+            .then((reg) => console.log('Success:', reg.scope))
+            .catch((err) => console.log('Failure:', err));
+        });
+      }
+    </script>
   </body>
 </html>
