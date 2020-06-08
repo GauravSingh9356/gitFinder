@@ -18,11 +18,21 @@ $(document).ready(function () {
         },
       }).done(function (repos) {
         $.each(repos, function (index, repo) {
+          var repo_lang = repo.language;   
+          var repo_desc = repo.description; 
+          console.log(repo_lang);       
+          if (repo_lang == null) {
+            console.log("null");
+            repo_lang = "No code.";
+          }
+          if (repo_desc == null) {
+            repo_desc = "No description.";
+          }
           $('#repos').append(`
             <div class="table-success table table-hover">
             <div class="row">
             <div class="col-md-6">
-            <strong>${repo.name}</strong>: ${repo.description}
+            <strong>${repo.name}</strong>: ${repo_desc}
             </div>
             <div class="col-md-3">
             <button type="button" class="btn btn-primary">Forks: ${repo.forks_count}</button>
@@ -31,7 +41,7 @@ $(document).ready(function () {
             
             </div>
             <div class="col-md-3">
-            <button type="button" class="btn btn-success">Language(s): ${repo.language}</button>
+            <button type="button" class="btn btn-success">Language(s): ${repo_lang}</button>
             <a href="${repo.html_url}" class="btn btn-info" target="_blank">Repo Page</a>
             <button type="button" class="btn btn-secondary"> Issues: ${repo.open_issues_count}</button>
             </div>
